@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "969281953729",
+    "project_id": "zoom-514ac",
+    "storage_bucket": "zoom-514ac.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:969281953729:android:a630840e5e35f30f89d940",
+        "android_client_info": {
+          "package_name": "com.appruloft.flutter_zoom"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "969281953729-lmu6e38u2ps3u11o6goc25237k24vavl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCy92o5BKhRZgNxXOucYDA9JMAQAJG-HLI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "969281953729-lmu6e38u2ps3u11o6goc25237k24vavl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
