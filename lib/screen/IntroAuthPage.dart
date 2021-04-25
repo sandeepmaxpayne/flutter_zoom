@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_zoom/authentication/navigateAuthScreen.dart';
 import 'package:flutter_zoom/variable.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 
@@ -55,7 +56,10 @@ class _IntroAuthPageState extends State<IntroAuthPage> {
           ),
         ),
       ],
-      onDone: () {},
+      onDone: () {
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => NavigateAuthScreen()));
+      },
       onSkip: () {},
       showSkipButton: true,
       skip: const Icon(
