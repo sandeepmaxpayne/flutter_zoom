@@ -14,6 +14,8 @@ class ProfileScreen extends StatefulWidget {
 class _ProfileScreenState extends State<ProfileScreen> {
   String userName = "";
   bool dataIsThere = false;
+  TextEditingController usernameController = TextEditingController();
+
   @override
   void initState() {
     super.initState();
@@ -27,6 +29,61 @@ class _ProfileScreenState extends State<ProfileScreen> {
       userName = userdoc.data()['userName'];
       dataIsThere = true;
     });
+  }
+
+  editProfile() async{
+    userCollection.doc(FirebaseAuth.instance.currentUser.uid).update({
+      'userName': usernameController.text;
+    });
+    setState(() {
+      userName = usernameController.text;
+    });
+    Navigator.pop(context);
+  }
+
+  openEditProfileDialog() async {
+    return showDialog(
+        context: context,
+        builder: (context) {
+          return Dialog(
+            child: Container(
+              height: 200,
+              child: Column(
+                children: [
+                  SizedBox(
+                    height: 30,
+                  ),
+                  Container(
+                    ,margin: EdgeInsets.only(left: 30, right: 30),
+                    child: TextField(
+                      controller: usernameController,
+                      style: myStyle(18, Colors.black),
+                      decoration: InputDecoration(
+                          labelText: 'Update Username',
+                          labelStyle: myStyle(16, Colors.grey)),
+                    ),
+                  ),
+            SizedBox(height: 40,),
+            InkWell(
+              onTap: () => editProfile(),
+              child: Container(
+                width: MediaQuery.of(context).size.width / 2,
+                height: 40,
+                decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                        colors: GradientColors.cherry)),
+                child: Center(
+                    child: Text(
+                      "Update Now!",
+                      style: myStyle(17, Colors.white),
+                    )),
+              ),
+            )
+                ],
+              ),
+            ),
+          );
+        });
   }
 
   @override
@@ -72,17 +129,20 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         SizedBox(
                           height: 30,
                         ),
-                        Container(
-                          width: MediaQuery.of(context).size.width / 2,
-                          height: 40,
-                          decoration: BoxDecoration(
-                              gradient: LinearGradient(
-                                  colors: GradientColors.cherry)),
-                          child: Center(
-                              child: Text(
-                            "Edit Profile",
-                            style: myStyle(17, Colors.white),
-                          )),
+                        InkWell(
+                          onTap: () => openEditProfileDialog(),
+                          child: Container(
+                            width: MediaQuery.of(context).size.width / 2,
+                            height: 40,
+                            decoration: BoxDecoration(
+                                gradient: LinearGradient(
+                                    colors: GradientColors.cherry)),
+                            child: Center(
+                                child: Text(
+                              "Edit Profile",
+                              style: myStyle(17, Colors.white),
+                            )),
+                          ),
                         )
                       ],
                     ),
