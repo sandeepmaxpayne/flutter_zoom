@@ -31,10 +31,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
     });
   }
 
-  editProfile() async{
-    userCollection.doc(FirebaseAuth.instance.currentUser.uid).update({
-      'userName': usernameController.text;
-    });
+  editProfile() async {
+    userCollection
+        .doc(FirebaseAuth.instance.currentUser.uid)
+        .update({'userName': usernameController.text});
     setState(() {
       userName = usernameController.text;
     });
@@ -54,7 +54,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     height: 30,
                   ),
                   Container(
-                    ,margin: EdgeInsets.only(left: 30, right: 30),
+                    margin: EdgeInsets.only(left: 30, right: 30),
                     child: TextField(
                       controller: usernameController,
                       style: myStyle(18, Colors.black),
@@ -63,22 +63,24 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           labelStyle: myStyle(16, Colors.grey)),
                     ),
                   ),
-            SizedBox(height: 40,),
-            InkWell(
-              onTap: () => editProfile(),
-              child: Container(
-                width: MediaQuery.of(context).size.width / 2,
-                height: 40,
-                decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                        colors: GradientColors.cherry)),
-                child: Center(
-                    child: Text(
-                      "Update Now!",
-                      style: myStyle(17, Colors.white),
-                    )),
-              ),
-            )
+                  SizedBox(
+                    height: 40,
+                  ),
+                  InkWell(
+                    onTap: () => editProfile(),
+                    child: Container(
+                      width: MediaQuery.of(context).size.width / 2,
+                      height: 40,
+                      decoration: BoxDecoration(
+                          gradient:
+                              LinearGradient(colors: GradientColors.cherry)),
+                      child: Center(
+                          child: Text(
+                        "Update Now!",
+                        style: myStyle(17, Colors.white),
+                      )),
+                    ),
+                  )
                 ],
               ),
             ),
